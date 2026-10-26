@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Results | Online Voting</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .message {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f1f3f5;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .candidate {
+            padding: 15px;
+            margin-top: 10px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Election Results</h1>
+<div id="resultList"></div>
+        <div class="message">
+            Voting is in progress. Results are not available now.
+        </div>
+
+        <h2>Registered Candidates</h2>
+
+        <div id="candidateList"></div>
+
+    </div>
+
+
+    <script>
+
+const candidates =
+    JSON.parse(localStorage.getItem("candidates")) || [];
+
+const resultList = document.getElementById("resultList");
+
+if (candidates.length === 0) {
+
+    resultList.innerHTML = "<p>No candidates available.</p>";
+
+} else {
+
+    candidates.forEach(function(candidate) {
+
+        const candidateDiv = document.createElement("div");
+
+        candidateDiv.className = "candidate";
+
+        candidateDiv.innerHTML =
+            "<h3>" + candidate.name + "</h3>" +
+            "<p>Party / Symbol: " + candidate.party + "</p>";
+
+        resultList.appendChild(candidateDiv);
+
+    });
+
+}
+
+</script>
+
+</body>
+</html>

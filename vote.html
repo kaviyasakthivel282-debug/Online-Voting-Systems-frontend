@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vote | VoteSphere</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <div class="navbar">
+
+        <a href="index.html" class="brand">
+            🗳️ VoteSphere
+        </a>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="vote.html">Vote</a>
+            <a href="results.html">Results</a>
+        </nav>
+
+    </div>
+
+
+    <!-- VOTING SECTION -->
+    <main class="container">
+
+        <div class="vote-header">
+            <h1>Cast Your Vote</h1>
+            <p>
+                Select your preferred candidate and confirm your vote.
+            </p>
+        </div>
+
+
+        <!-- CANDIDATES WILL APPEAR HERE -->
+        <div id="candidateList" class="candidate-container">
+
+            <!--
+                Your existing JavaScript/API should
+                load candidate cards here.
+            -->
+
+        </div>
+
+
+        <!-- VOTE MESSAGE -->
+        <p id="message" class="vote-message"></p>
+
+    </main>
+ <h2>Select Your Candidate</h2>
+
+<button onclick="castVote('Kaviya')">
+    Vote for Kaviya
+</button>
+
+<button onclick="castVote('Alice Johnson')">
+    Vote for Alice Johnson
+</button>
+
+<button onclick="castVote('Aasha')">
+    Vote for Aasha
+</button>
+
+<button onclick="castVote('Bob Williams')">
+    Vote for Bob Williams
+</button>
+
+<button onclick="castVote('Carol Davis')">
+    Vote for Carol Davis
+</button>
+
+<script>
+function castVote(candidate) {
+
+    let votes = JSON.parse(localStorage.getItem("votes")) || {};
+
+    if (!votes[candidate]) {
+        votes[candidate] = 0;
+    }
+
+    votes[candidate]++;
+
+    localStorage.setItem("votes", JSON.stringify(votes));
+
+    alert("Your vote has been successfully cast!");
+
+window.location.href = "vote.html";
+}
+</script>
+
+    <footer>
+        <p>© 2026 VoteSphere | Secure Digital Voting</p>
+    </footer>
+
+   
+</body>
+
+</html>
